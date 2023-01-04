@@ -1,4 +1,5 @@
 import React from 'react';
+import { Avatar } from '../../avatar';
 import IconButton from '../../buttons/IconButton';
 import { ArrowDownIcon } from '../../icons/ArrowDown';
 
@@ -16,11 +17,7 @@ export const ProfileLink: React.FC<ProfileProps> = ({
     <IconButton
       label={
         <div className='flex items-center'>
-          <img
-            className='h-10 w-10 rounded-full border border-gray-light ml-3'
-            src={image}
-            alt='username'
-          />
+          <Avatar image={image} name={name} />
           <h6>{name}</h6>
         </div>
       }
