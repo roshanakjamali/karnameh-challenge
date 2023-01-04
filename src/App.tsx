@@ -1,7 +1,9 @@
+import AppBar from './components/appbar';
+
 function App() {
   return (
-    <div className='App'>
-      <p>کارنامه</p>
+    <div className='container min-w-full'>
+      <AppBar />
     </div>
   );
 }
