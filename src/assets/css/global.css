@@ -1,0 +1,18 @@
+@import url(./fonts-faces.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body,
+  p {
+    @apply text-sm text-gray-dark;
+  }
+}
+
+@layer base {
+  html {
+    font-family: Yekan, system-ui, sans-serif;
+  }
+}
