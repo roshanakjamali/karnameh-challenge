@@ -5,9 +5,22 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    direction: rtl;
+    background-color: #e5e5e5;
+  }
   body,
   p {
     @apply text-sm text-gray-dark;
+  }
+  header {
+    background-color: white;
+  }
+  h1 {
+    @apply text-2xl font-bold;
+  }
+  h6 {
+    @apply text-sm font-bold;
   }
 }
 
