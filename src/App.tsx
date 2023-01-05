@@ -1,5 +1,5 @@
 import AppBar from './components/appbar';
-import QuestionBox, { QuestionProps } from './components/questionBox';
+import QuestionBox, { QuestionProps } from './components/question/questionBox';
 
 import UserImage from './assets/images/user-sample.png';
 

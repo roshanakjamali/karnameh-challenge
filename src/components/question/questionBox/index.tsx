@@ -1,7 +1,7 @@
-import Paper from '../paper';
+import Paper from '../../paper';
 
-import Header from './components/header';
-import { Content } from './components/content';
+import Header from './components/Header';
+import { Content } from './components/Content';
 
 export interface QuestionProps {
   title: string;

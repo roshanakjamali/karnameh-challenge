@@ -1,8 +1,8 @@
 import React from 'react';
-import { Avatar } from '../../avatar';
-import IconButton from '../../buttons/IconButton';
-import { CommentsIcon } from '../../icons/Comments';
-import { Detail } from './detail';
+import { Avatar } from '../../../avatar';
+import IconButton from '../../../buttons/IconButton';
+import { CommentsIcon } from '../../../icons/Comments';
+import { Detail } from './Detail';
 
 export interface HeaderProps {
   title: string;
@@ -33,6 +33,7 @@ export default function Header({
             <p className='color-grey-50 text-xs font-bold pr-1'>{comments}</p>
           }
           icon={CommentsIcon}
+          onClick={() => console.log('Dropdown menus')}
         />
       </div>
     </div>
