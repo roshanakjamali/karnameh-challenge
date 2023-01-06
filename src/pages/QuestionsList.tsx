@@ -1,17 +1,31 @@
-import QuestionBox, { QuestionProps } from '../components/question/questionBox';
+import { SpinIcon } from '../components/icons/Spin';
+import Paper from '../components/paper';
+import QuestionBox from '../components/question/questionBox';
 
-import UserImage from '../assets/images/user-sample.png';
+import { useGetQuestions } from '../hooks/useGetQuestions';
 
-const sample: QuestionProps = {
-  title: 'مشکل در Auth در React',
-  date: '15/2/1400',
-  time: '16:48',
-  question:
-    'سلام من میخوام یه authentication ساده تو react بسازم اما این error ر  بهم میده. نمیدونم مشکل از کجاست. عکس خروجی console رو هم گذاشتم که  ببینید دقیقا چه مشکلی وجود داره',
-  image: UserImage,
-  comments: 20,
-};
+export const QuestionsList = () => {
+  const { data, error, loading } = useGetQuestions();
 
-export const QuestionsList: React.FC<{}> = () => {
-  return <QuestionBox question={sample} />;
+  if (loading)
+    return (
+      <Paper className='p-3'>
+        <h3 className='flex gap-4'>
+          {SpinIcon}
+          منتظر بمانید...
+        </h3>
+      </Paper>
+    );
+
+  if (error)
+    return (
+      <Paper className='p-3'>
+        <h1 className='text-red-500'>خطا</h1>
+        <p>{error}</p>
+      </Paper>
+    );
+
+  return data.map((question) => (
+    <QuestionBox question={question} key={question.id} />
+  ));
 };
