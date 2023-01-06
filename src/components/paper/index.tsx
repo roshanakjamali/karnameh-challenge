@@ -1,9 +1,14 @@
 import { ReactNode } from 'react';
 
-type PaperProps = { children: ReactNode };
+interface PaperProps {
+  children: ReactNode;
+  className?: string;
+}
 
-export default function Paper({ children }: PaperProps) {
+export default function Paper({ children, className = '' }: PaperProps) {
   return (
-    <div className='bg-white w-full shadow-sm rounded-lg mb-5'>{children}</div>
+    <div className={`bg-white w-full shadow-sm rounded-lg mb-5 ${className}`}>
+      {children}
+    </div>
   );
 }

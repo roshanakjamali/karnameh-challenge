@@ -4,6 +4,7 @@ import { Content } from './components/Content';
 import Header from './components/Header';
 
 export interface QuestionProps {
+  id: string;
   title: string;
   date: string;
   time: string;
@@ -15,11 +16,15 @@ export interface QuestionProps {
 const QuestionBox: React.FC<{
   question: QuestionProps;
   isPreviewMode?: boolean;
-}> = ({ question: { question, ...headerData }, isPreviewMode = false }) => {
+}> = ({ question: { question, id, ...headerData }, isPreviewMode = false }) => {
   return (
     <Paper>
       <Header {...headerData} />
-      <Content question={question} isPreviewMode={isPreviewMode} />
+      <Content
+        questionId={id}
+        question={question}
+        isPreviewMode={isPreviewMode}
+      />
     </Paper>
   );
 };
