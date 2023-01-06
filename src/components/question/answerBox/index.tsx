@@ -4,6 +4,8 @@ import { Content } from './components/Content';
 import Header from './components/Header';
 
 export interface AnswerProps {
+  id: string;
+  questionId: string;
   title: string;
   date: string;
   time: string;
