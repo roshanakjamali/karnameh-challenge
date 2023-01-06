@@ -59,10 +59,9 @@ export const CreateNewQuestion: React.FC<CreateNewQuestionProps> = ({
         <label htmlFor='problem'>متن سوال</label>
         <textarea id='problem' onChange={(e) => setProblem(e.target.value)} />
       </div>
-      {error ||
-        (responseError && (
-          <p className='text-red-500 text-sm'>{error || responseError}</p>
-        ))}
+      {(error || responseError) && (
+        <p className='text-red-500 text-sm'>{error || responseError}</p>
+      )}
       {loading && (
         <p className='flex gap-4 text-green-500 text-sm'>
           {SpinIcon}

@@ -11,13 +11,13 @@ import { Error } from '../components/error';
 import { useGetAnswers } from '../hooks/useGetAnswers';
 
 export const QuestionDetail: React.FC<{}> = () => {
-  const params = useParams();
-  const { data, loading, error } = useGetQuestion(params.questionId!);
+  const { questionId } = useParams();
+  const { data, loading, error } = useGetQuestion(questionId!);
   const {
     data: answers,
     loading: answerLoading,
     error: answerError,
-  } = useGetAnswers(params.questionId!);
+  } = useGetAnswers(questionId!);
 
   if (loading || answerLoading) return <Loading />;
   if (error || !data?.id || answerError)
@@ -34,7 +34,7 @@ export const QuestionDetail: React.FC<{}> = () => {
       {answers.map((answer) => (
         <AnswerBox answer={answer} key={answer.id} />
       ))}
-      <CreateAnswer />
+      <CreateAnswer questionId={questionId!} />
     </>
   );
 };

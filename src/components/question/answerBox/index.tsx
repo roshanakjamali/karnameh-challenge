@@ -6,7 +6,7 @@ import Header from './components/Header';
 export interface AnswerProps {
   id: string;
   questionId: string;
-  title: string;
+  username: string;
   date: string;
   time: string;
   answer: string;
@@ -17,8 +17,7 @@ export interface AnswerProps {
 
 const AnswerBox: React.FC<{
   answer: AnswerProps;
-  isPreviewMode?: boolean;
-}> = ({ answer: { answer, ...headerData }, isPreviewMode = false }) => {
+}> = ({ answer: { answer, ...headerData } }) => {
   return (
     <Paper>
       <Header {...headerData} />

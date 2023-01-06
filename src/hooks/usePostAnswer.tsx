@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react';
-
 import axios from '../utils/axios';
+
+import { useState } from 'react';
 import { AnswerProps } from '../components/question/answerBox';
 
-export const useGetAnswers = (questionId: string) => {
-  const [data, setData] = useState<AnswerProps[]>([]);
-  const [loading, setLoading] = useState(true);
+export const usePostAnswer = () => {
+  const [data, setData] = useState<AnswerProps>();
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  useEffect(() => {
+  const create = (answer: Omit<AnswerProps, 'id'>) => {
+    setLoading(true);
     axios
-      .get(`/answers?_sort=id&_order=desc&questionId=${questionId}`)
+      .post('/answers', answer)
       .then((res) => {
         setData(res.data);
       })
@@ -18,7 +19,7 @@ export const useGetAnswers = (questionId: string) => {
         setError(err?.message || 'Try Again');
       })
       .finally(() => setLoading(false));
-  }, []);
+  };
 
-  return { data, loading, error };
+  return { data, loading, error, create };
 };

@@ -5,7 +5,7 @@ import { FaceFrownIcon } from '../../../icons/FaceFrown';
 import { Detail } from './Detail';
 
 export interface HeaderProps {
-  title: string;
+  username: string;
   date: string;
   time: string;
   image: string;
@@ -14,7 +14,7 @@ export interface HeaderProps {
 }
 
 export default function Header({
-  title,
+  username,
   date,
   time,
   image,
@@ -25,7 +25,7 @@ export default function Header({
     <div className='grid rounded-lg shadow-sm px-4 py-2'>
       <div className='flex col-start-1 col-end-13 md:col-end-6 items-center'>
         <Avatar image={image} name={'user'} shape='square' size='small' />
-        <h3>{title}</h3>
+        <h3>{username}</h3>
       </div>
       <div className='flex col-start-1 col-end-13 md:col-start-7 justify-start md:justify-end items-center'>
         <Detail label='ساعت' value={time} />
