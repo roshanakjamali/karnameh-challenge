@@ -9,7 +9,7 @@ export interface HeaderProps {
   date: string;
   time: string;
   image: string;
-  comments: number;
+  'answer-count': number;
 }
 
 export default function Header({
@@ -17,7 +17,7 @@ export default function Header({
   date,
   time,
   image,
-  comments,
+  'answer-count': answerCount,
 }: HeaderProps) {
   return (
     <div className='grid rounded-lg shadow-sm px-4 py-2'>
@@ -30,7 +30,9 @@ export default function Header({
         <Detail label='تاریخ' value={date} />
         <IconButton
           label={
-            <p className='color-grey-50 text-xs font-bold pr-1'>{comments}</p>
+            <p className='color-grey-50 text-xs font-bold pr-1'>
+              {answerCount}
+            </p>
           }
           icon={CommentsIcon}
           onClick={() => console.log('Dropdown menus')}

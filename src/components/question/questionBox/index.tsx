@@ -10,7 +10,7 @@ export interface QuestionProps {
   time: string;
   question: string;
   image: string;
-  comments: number;
+  'answer-count': number;
 }
 
 const QuestionBox: React.FC<{

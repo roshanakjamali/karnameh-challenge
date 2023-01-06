@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Button from '../../buttons/Button';
 import { SpinIcon } from '../../icons/Spin';
 
 import { usePostAnswer } from '../../../hooks/usePostAnswer';
+import { addAnswers } from '../../../features/answersSlice';
+
 import { AnswerProps } from '../answerBox';
 
-export const CreateAnswer: React.FC<{ questionId: string }> = ({
-  questionId,
-}) => {
+export const CreateAnswer: React.FC<{
+  questionId: string;
+  onSuccess?(): void;
+}> = ({ questionId, onSuccess = () => {} }) => {
+  const dispatch = useDispatch();
   const [answer, setAnswer] = useState('');
   const [error, setError] = useState('');
 
@@ -42,8 +47,9 @@ export const CreateAnswer: React.FC<{ questionId: string }> = ({
 
   useEffect(() => {
     if (!data?.id) return;
-    console.log(data);
     setAnswer('');
+    dispatch(addAnswers({ answer: data }));
+    onSuccess();
   }, [data]);
 
   return (
