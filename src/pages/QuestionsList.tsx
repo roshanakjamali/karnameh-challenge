@@ -1,5 +1,5 @@
-import { SpinIcon } from '../components/icons/Spin';
 import Paper from '../components/paper';
+import { SpinIcon } from '../components/icons/Spin';
 import QuestionBox from '../components/question/questionBox';
 
 import { useGetQuestions } from '../hooks/useGetQuestions';
