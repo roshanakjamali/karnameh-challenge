@@ -1,6 +1,13 @@
+import { useSelector, useDispatch } from 'react-redux';
+
 import { Avatar } from '../../../avatar';
 import { SmileIcon } from '../../../icons/FaceSmile';
 import { FaceFrownIcon } from '../../../icons/FaceFrown';
+import {
+  disLikeAnswer,
+  initialAnswerStateProps,
+  likeAnswer,
+} from '../../../../features/answersSlice';
 
 import { Detail } from './Detail';
 
@@ -11,6 +18,7 @@ export interface HeaderProps {
   image: string;
   like: number;
   dislike: number;
+  id: string;
 }
 
 export default function Header({
@@ -20,7 +28,20 @@ export default function Header({
   image,
   like,
   dislike,
+  id,
 }: HeaderProps) {
+  const { like: likeCount = 0, dislike: dislikeCount = 0 } = useSelector<
+    { answers: initialAnswerStateProps },
+    { like: number; dislike: number }
+  >((state) => {
+    return state.answers.list[id]
+      ? {
+          like: state.answers.list[id].like,
+          dislike: state.answers.list[id].dislike,
+        }
+      : { like: 0, dislike: 0 };
+  });
+
   return (
     <div className='grid rounded-lg shadow-sm px-4 py-2'>
       <div className='flex col-start-1 col-end-13 md:col-end-6 items-center'>
@@ -32,11 +53,11 @@ export default function Header({
         <Detail label='تاریخ' value={date} />
 
         <div className='detail-emoji'>
-          {SmileIcon} {like}
+          {SmileIcon} {likeCount}
         </div>
 
         <div className='detail-emoji text-red-500'>
-          {FaceFrownIcon} {dislike}
+          {FaceFrownIcon} {dislikeCount}
         </div>
       </div>
     </div>

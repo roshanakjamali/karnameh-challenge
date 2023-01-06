@@ -17,11 +17,11 @@ export interface AnswerProps {
 
 const AnswerBox: React.FC<{
   answer: AnswerProps;
-}> = ({ answer: { answer, ...headerData } }) => {
+}> = ({ answer: { answer, id, ...headerData } }) => {
   return (
     <Paper>
-      <Header {...headerData} />
-      <Content answer={answer} />
+      <Header {...{ ...headerData, id }} />
+      <Content answer={answer} id={id} />
     </Paper>
   );
 };

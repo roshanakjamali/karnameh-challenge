@@ -5,7 +5,7 @@ import { PlusIcon } from '../../icons/Plus';
 import IconButton from '../../buttons/IconButton';
 import { CreateNewQuestion } from '../../question/createNewQuestion';
 
-import { ProfileLink } from './ProfileLink';
+import { ProfileLink } from './profileLink';
 import UserProfileImage from '../../../assets/images/profile-sample.jpg';
 
 export const Navbar: React.FC = () => {

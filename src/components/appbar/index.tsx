@@ -1,5 +1,5 @@
 import { Logo } from './components/Logo';
-import { Navbar } from './components/NavBar';
+import { Navbar } from './components/navBar';
 
 export default function AppBar() {
   return (
