@@ -8,7 +8,7 @@ export const useGetQuestions = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
+  const refetch = () => {
     axios
       .get('/questions?_sort=id&_order=desc')
       .then((res) => {
@@ -18,7 +18,11 @@ export const useGetQuestions = () => {
         setError(err?.message || 'Try Again');
       })
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    refetch();
   }, []);
 
-  return { data, loading, error };
+  return { data, loading, error, refetch };
 };

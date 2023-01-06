@@ -1,11 +1,7 @@
 import { PropsWithChildren } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import {
-  disLikeAnswer,
-  initialAnswerStateProps,
-  likeAnswer,
-} from '../../../../features/answersSlice';
+import { disLikeAnswer, likeAnswer } from '../../../../features/answersSlice';
 
 import { FaceFrownIcon } from '../../../icons/FaceFrown';
 import { SmileIcon } from '../../../icons/FaceSmile';

@@ -1,14 +1,18 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Modal } from '../../modal';
 import { PlusIcon } from '../../icons/Plus';
 import IconButton from '../../buttons/IconButton';
 import { CreateNewQuestion } from '../../question/createNewQuestion';
 
+import { invalidateList } from '../../../features/questionsSlice';
+
 import { ProfileLink } from './profileLink';
 import UserProfileImage from '../../../assets/images/profile-sample.jpg';
 
 export const Navbar: React.FC = () => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
   return (
@@ -26,7 +30,10 @@ export const Navbar: React.FC = () => {
         />
       </nav>
       <Modal title='ایجاد سوال جدید' open={open} onClose={() => setOpen(false)}>
-        <CreateNewQuestion onClose={() => setOpen(false)} />
+        <CreateNewQuestion
+          onClose={() => setOpen(false)}
+          onSuccess={() => dispatch(invalidateList())}
+        />
       </Modal>
     </>
   );
