@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 
 import axios from '../utils/axios';
-import { QuestionProps } from '../components/question/questionBox';
+import { AnswerProps } from '../components/question/answerBox';
 
-export const useGetQuestions = () => {
-  const [data, setData] = useState<QuestionProps[]>([]);
+export const useGetAnswers = (questionId: string) => {
+  const [data, setData] = useState<AnswerProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     axios
-      .get('/questions?_sort=id&_order=desc')
+      .get(`/answers?questionId=${questionId}`)
       .then((res) => {
         setData(res.data);
       })
