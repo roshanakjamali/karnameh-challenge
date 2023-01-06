@@ -1,7 +1,7 @@
 import Paper from '../../paper';
 
-import Header from './components/Header';
 import { Content } from './components/Content';
+import Header from './components/Header';
 
 export interface QuestionProps {
   title: string;
@@ -12,13 +12,14 @@ export interface QuestionProps {
   comments: number;
 }
 
-const QuestionBox: React.FC<{ question: QuestionProps }> = ({
-  question: { question, ...headerData },
-}) => {
+const QuestionBox: React.FC<{
+  question: QuestionProps;
+  isPreviewMode?: boolean;
+}> = ({ question: { question, ...headerData }, isPreviewMode = false }) => {
   return (
     <Paper>
       <Header {...headerData} />
-      <Content question={question} />
+      <Content question={question} isPreviewMode={isPreviewMode} />
     </Paper>
   );
 };
