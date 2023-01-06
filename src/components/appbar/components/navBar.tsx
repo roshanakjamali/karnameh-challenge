@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import IconButton from '../../buttons/IconButton';
-import { PlusIcon } from '../../icons/Plus';
-import { ProfileLink } from './ProfileLink';
 import { Modal } from '../../modal';
-
-import UserProfileImage from '../../../assets/images/profile-sample.jpg';
+import { PlusIcon } from '../../icons/Plus';
+import IconButton from '../../buttons/IconButton';
 import { CreateNewQuestion } from '../../question/createNewQuestion';
+
+import { ProfileLink } from './ProfileLink';
+import UserProfileImage from '../../../assets/images/profile-sample.jpg';
 
 export const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);

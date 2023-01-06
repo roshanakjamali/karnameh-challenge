@@ -1,17 +1,22 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import AppBar from './components/appbar';
-import QuestionBox, { QuestionProps } from './components/question/questionBox';
 
-import UserImage from './assets/images/user-sample.png';
+import NotFound from './pages/NotFound';
+import { QuestionsList } from './pages/QuestionsList';
+import { QuestionDetail } from './pages/QuestionDetail';
 
-const sample: QuestionProps = {
-  title: 'مشکل در Auth در React',
-  date: '15/2/1400',
-  time: '16:48',
-  question:
-    'سلام من میخوام یه authentication ساده تو react بسازم اما این error ر  بهم میده. نمیدونم مشکل از کجاست. عکس خروجی console رو هم گذاشتم که  ببینید دقیقا چه مشکلی وجود داره',
-  image: UserImage,
-  comments: 20,
-};
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <QuestionsList />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: 'question/:questionId',
+    element: <QuestionDetail />,
+  },
+]);
 
 function App() {
   return (
@@ -19,7 +24,7 @@ function App() {
       <AppBar />
       <main>
         <div className='max-w-7xl mx-auto'>
-          <QuestionBox question={sample} />
+          <RouterProvider router={router} />
         </div>
       </main>
     </div>

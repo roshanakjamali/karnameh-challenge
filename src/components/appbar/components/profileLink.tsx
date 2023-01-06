@@ -1,4 +1,3 @@
-import React from 'react';
 import { Avatar } from '../../avatar';
 import IconButton from '../../buttons/IconButton';
 import { ArrowDownIcon } from '../../icons/ArrowDown';
@@ -24,6 +23,7 @@ export const ProfileLink: React.FC<ProfileProps> = ({
       icon={ArrowDownIcon}
       iconPosition='right'
       className='mr-0 pr-10 pl-0'
+      onClick={() => console.log(`user name is ${name}`)}
     />
   );
 };

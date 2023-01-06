@@ -1,17 +1,25 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
+import { Link } from 'react-router-dom';
+
 import Button from '../../../buttons/Button';
 
 interface ContentProps {
   question: string;
+  isPreviewMode: boolean;
 }
 
 export const Content: React.FC<PropsWithChildren<ContentProps>> = ({
   question,
+  isPreviewMode = false,
 }) => {
   return (
     <div className='grid justify-items-end px-4 py-5'>
       <p className='w-full mb-4 text-sm font-medium'>{question}</p>
-      <Button varient='outline' label='مشاهده جزییات' />
+      {!isPreviewMode && (
+        <Link to='/question/5'>
+          <Button varient='outline' label='مشاهده جزییات' />
+        </Link>
+      )}
     </div>
   );
 };
