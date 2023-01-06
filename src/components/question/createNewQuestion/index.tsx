@@ -6,10 +6,12 @@ import { QuestionProps } from '../questionBox';
 
 interface CreateNewQuestionProps {
   onClose(): void;
+  onSuccess?(): void;
 }
 
 export const CreateNewQuestion: React.FC<CreateNewQuestionProps> = ({
   onClose,
+  onSuccess = () => {},
 }) => {
   const [subject, setSubject] = useState('');
   const [problem, setProblem] = useState('');
@@ -42,6 +44,7 @@ export const CreateNewQuestion: React.FC<CreateNewQuestionProps> = ({
 
   useEffect(() => {
     if (!data?.id) return;
+    onSuccess();
     onClose();
   }, [data]);
 
